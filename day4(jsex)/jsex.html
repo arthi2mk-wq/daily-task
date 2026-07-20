@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #box{
+            height: 150px;
+            width: 150px;
+            border: 1px solid black;
+            
+        }
+        .active{
+            background-color: palevioletred;
+            box-shadow:10px 10px 10px black;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+    <script>
+        let a="it is very "
+        let b="beautiful flower"
+        console.log(a+b)
+        //operators
+        let x="12"-"14"
+        let y="12"+10
+        let z=10
+        let c=12
+        console.log(z+=c)
+        console.log(x)
+        console.log(y)
+        //terinary operators
+        const year=2024
+        console.log(year%4==0 ?"leap year":"not an leap year")
+
+        let value=5
+        console.log(value=="5")
+        console.log(value==="5")
+        //condition statements
+        let age=24
+        if(age>18){
+            console.log("Eligible for vote")
+        }
+        else{
+            console.log("not eligible for vote")
+        }
+        //switch statement
+        let day=2
+        switch(day){
+            case 0:
+                console.log("monday")
+                break;
+            case 1:
+                console.log("tuesday")
+                break;
+                
+            case 2:
+                console.log("wednesday")
+                break;
+                
+            case 3:
+                console.log("thursday")
+                break;
+                
+            case 4:
+                console.log("friday")
+                break;
+               
+            default:
+                console.log("may be sunday or saturday")
+            
+            
+        }
+        //array
+        const d=[1,2,3,4,5]
+        let result=d.pop()
+        console.log(result)
+        console.log(d)
+        console.log(d.push(10))
+        console.log(d)
+        //pre increment
+        let g=10
+        console.log(g++)
+        console.log(g)
+
+        //box colour
+        function applycolour(){
+            document.getElementById("box").classList.add("active");
+
+        }
+
+          </script>
+    <p id="a">hello world</p>
+
+    <button type="button" onclick='document.getElementById("a").style.color = "red" ; document.getElementById("a").style.fontSize = "50px"'>click here</button>
+    <h1 id="b">html page</h1>
+    <button type="button" onclick='document.getElementById("b").innerHTML="Javascript Intro"'>click</button>
+    <br><br>
+    <div id="box">
+
+    </div><br>
+    <button onclick="applycolour()">Apply colour</button>
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+          padding: 0px;
+          margin: 0px;
+        }
+        body{
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          background-image: url(image\ copy\ 2.png);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        
+    #a{
+        height: 450px;
+        width: 400px;
+        border: black 2px solid;
+        border-radius: 5px;
+        box-shadow: 8px 8px 4px black;
+        margin-top: 50px;
+        background-color: transparent;
+    }
+    a{
+        margin: 20px;
+    }
+    #username,#password{
+        height: 30px;
+        width:300px ;
+        border-radius: 20px;
+        margin: 20px;
+    }
+    button{
+        height: 20px;
+        width: 70px;
+        border-radius: 30px;
+        background-color: lightgray;
+        border: solid 1px black;
+    }
+    
+</style>
+<body>
+    <script>
+        function btn(){
+            let username=document.getElementById("username").value;
+            let password=document.getElementById("password").value;
+            
+            let correctusername="admin"
+            let correctpassword="12345"
+
+            if (username === correctusername && password === correctpassword) {
+                alert("Success!Form Submitted Successfully");
+
+            }
+            else {
+                alert("Invalid!Enter correct username and password");
+            }
+        }
+        
+    </script>
+    <center>
+         
+         <div id="a">
+            <form action="">
+            <h3 style="margin-top: 40px;">LOGIN</h3>
+        
+            <input type="text" placeholder="    User name" required id="username"  ><br>
+            <input type="password" placeholder="   password" required id="password"><br>
+            <input type="checkbox" style=" width: 20px;height: 20px;">Remember me
+            <a href="" >Forget Password</a><br><br><br>
+            <center><button style="height: 30px; width: 100px; margin-top: 20px;" onclick="btn()">Submit</button></center>
+            </form>
+
+
+         </div>
+    </center>
+    
+</body>
+</html>
