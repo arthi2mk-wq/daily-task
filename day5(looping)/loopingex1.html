@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+        body{
+            background-color:lightgrey;
+        }
+        #a{
+            height: 400px;
+            width: 450px;
+            box-shadow: 0px 0px 5px grey;
+            margin: 100px;
+            background-color: white;
+            /* display: flex;
+            flex-direction: column; */
+        }
+        h1{
+            
+            margin-top: 100px;
+            padding-top: 50px;
+        }
+        input{
+            height: 30px;
+            width: 350px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button{
+            margin-top: 30px;
+            height:30px;
+            width: 100px;
+            color: white;
+            background-color: green;
+            border-radius: 5px;
+        }
+
+    </style>
+    <script >
+        function check(){
+            const word1=document.getElementById("word1").value.trim().toLowerCase().replace(/[^a-z]/g, "");
+            const word2=document.getElementById("word2").value.trim().toLowerCase().replace(/[^a-z]/g, "");
+            let result=document.getElementById("result")
+            
+            if(word1==="" || word2===""){
+            result.textContent="Please Enter the both value"
+            return;
+        }
+        if(word1.length !== word2.length){
+            result.textContent="Not an Anagram"
+            return;
+        }
+        
+      
+}
+
+        
+        
+        
+        
+
+    </script>
+    <center>
+    <div id="a">
+        <h1>Anagram Checker</h1>
+        <input type="text" placeholder="       Enter word 1" id="word1">
+        <input type="text" placeholder="       Enter word 2" id="word2">
+         
+        <center><button  style="height:30px;width: 100px;color: white;background-color: green;border-radius: 5px;" onclick="check()">Check</button></center>
+        <p id="result" style="font-size: 35px;"></p>
+       
+
+    </div>
+    </center>
+</body>
+</html>
