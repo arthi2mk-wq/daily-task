@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    .highlight {
+    color: red;
+    font-size: 30px;
+    
+}
+.boxstyle{
+        background-color:lightcyan;
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+        box-shadow: 5px 5px 5px gray;
+
+    }
+
+</style>
+    <h1>
+        DOM
+    </h1>
+    <h2>Accessing elements</h2>
+    <p id="title">Fruits</p>
+    <ul>
+        <li id="mango">Mango</li>
+        <li class="orange">Orange</li>
+        <li id="apple">Apple</li>
+    </ul>
+    <h2>changing attributes</h2>
+    <img src="flower1.png" alt="" id="image" style="height: 100px; width: 100px;">
+
+    <h1>Events</h1>
+<h2>1.onclick method using function</h2>
+
+
+<button onclick="displaydate()">Time</button>
+
+<p id="demo"></p>
+<h2 >2.Event Listener</h2>
+<p id="a">hello world!</p>
+<button id="ael">click</button>
+<h3>3.text content</h3>
+<div id="box">
+    <p id="box1">all</p>
+    <p>ok</p>
+</div>
+<div style="height: 150px;width: 200px;border: 1px solid black;padding: 10px;margin: 20px;">
+    <h3>keydown event</h3>
+    <input id="key" type="text" placeholder="   enter value">
+    <p id="word"></p>
+</div>
+<h3>4.load event</h3>
+<p id="load"></p>
+<h3>classlist</h3>
+<p id="text">Hello</p>
+<h3>5.toggle</h3>
+<div id="toggle">
+<h1 style="margin: 20px;">Hello world</h1>
+
+
+</div>
+<button id="change">add color</button>
+<h3>6.DOM Traversal</h3>
+<ul id="list">
+    <li id="mango">mango</li>
+    <li id="orange">orange</li>
+    <li id="grapes">grapes</li>
+</ul>
+
+<script>
+    function displaydate(){
+        document.getElementById('demo').innerHTML=Date()
+    }
+    const event=document.getElementById('ael');
+    event.addEventListener("click",function(){
+        document.getElementById('a').style.color="red";
+         document.getElementById('a').style.fontSize="32px";
+    });
+    const fruit=document.getElementById("mango");
+    fruit.innerHTML='Tomato'
+    
+    const orange=document.getElementsByClassName("orange");
+    orange[0].innerHTML="potato"
+    const title=document.querySelector("#title");
+    title.innerHTML="vegetable"
+    
+
+    const image = document.getElementById("image");
+    image.src = "flower1.png";
+    const box = document.getElementById('box1');
+    console.log(box.innerText);
+
+
+    box.innerText = "<h1>HI</h1>";
+
+    console.log(box.innerText);
+
+    const key=document.getElementById("key")
+    key.addEventListener("keyup",function(event){
+        document.getElementById("word").innerHTML="you pressed:"+event.key;
+    })
+    window.addEventListener("load", function () {
+  document.getElementById("load").innerHTML = "Page is fully loaded!";
+
+});
+const text = document.getElementById("text");
+
+text.classList.add("highlight");
+const toggle=document.getElementById("toggle")
+const change=document.getElementById("change")
+change.addEventListener("click",function(){
+    toggle.classList.toggle("boxstyle")
+})
+const list=document.getElementById("list")
+console.log(list.children)
+
+</script>
+</body>
+</html>
