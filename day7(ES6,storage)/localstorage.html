@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>example</h2>
+    <button onclick="savedata()">save data</button>
+    <button onclick="getdata()">Get data</button>
+    <button onclick="cleardata()">Clear all</button>
+    <p id="output"></p>
+    <script>
+         
+        function savedata(){
+            localStorage.setItem("name","rahul")
+            localStorage.setItem("age",23)
+            let fruit=["apple","orange","grapes"]
+            localStorage.setItem("fruit",JSON.stringify(fruit))
+            let student={
+                
+                rollno:23,
+                mark:98
+            }
+            localStorage.setItem("student",JSON.stringify(student))
+
+
+        }
+        function getdata(){
+           let name= localStorage.getItem("name")
+           let age=Number(localStorage.getItem("age"))
+           let fruit=JSON.parse(localStorage.getItem("fruit"))
+           let student = JSON.parse(localStorage.getItem("student"));
+           document.getElementById("output").innerHTML=`
+             Name: ${name}<br>
+             Age: ${age}<br>
+             
+            Roll No: ${student.rollno}<br>
+             Mark: ${student.mark}`;
+           
+        }
+        function cleardata(){
+            localStorage.clear()
+            alert("all data are deleted")
+        }
+
+    </script>
+</body>
+</html>
