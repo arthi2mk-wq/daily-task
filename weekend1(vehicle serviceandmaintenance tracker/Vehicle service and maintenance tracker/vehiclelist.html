@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image: url(bg.png);background-size: cover;">
+    <div id="vehicleForm">
+        
+        
+        <div style="height: 680px;width: 550px;border: 1px solid rgb(25, 114, 149); margin-left: 250px;padding-left: 20px;padding-top: 10px;background-color:white" >
+            <form action="">
+                <img id="closeForm"src="close.png"style="height:30px;width:30px;margin-left:500px;cursor:pointer;">
+                <label for=""> Vehicle Type</label><br>
+                <div style="display: flex;flex-direction: row;">
+                <div class="type" onclick="vehicleType='Sedan'" style="height: 100px; width: 100px;border: 1px solid rgb(25, 114, 149) ;display: flex;flex-direction: column;border-radius: 5px;margin: 10px;">
+                <img src="sedan2icon.png" alt="" style="height: 60px;width: 60px;margin-left: 10px;" >
+                
+                <span style="margin-left: 30px;color:rgb(25, 114, 149) ;">Sedan</span>
+                </div>
+                <div class="type" onclick="vehicleType='suv'" style="height: 100px; width: 100px;border: 1px solid rgb(25, 114, 149) ;display: flex;flex-direction: column;border-radius: 5px;margin: 10px;">
+                    <img src="suvicon.png" alt="" style="height: 60px;width: 60px;margin-left: 10px;">
+                
+                <span style="margin-left: 30px;color:rgb(25, 114, 149) ;">SUV</span>
+                </div>
+                <div class="type" onclick="vehicleType='bike'" style="height: 100px; width: 100px;border: 1px solid rgb(25, 114, 149) ;display: flex;flex-direction: column;border-radius: 5px;margin: 10px;">
+                <img src="bikeicon.png" alt=""  style="height: 60px;width: 60px;margin-left: 10px;" >
+               
+                <span style="margin-left: 30px;color:rgb(25, 114, 149) ;">Motor cycle</span>
+                </div>
+                <div class="type" onclick="vehicleType='truck'"  style="height: 100px; width: 100px;border: 1px solid rgb(25, 114, 149) ;display: flex;flex-direction: column;border-radius: 5px;margin: 10px;">
+                <img src="truckicon.png" alt="" style="height: 60px;width: 60px;margin-left: 10px;">
+               
+                <span style="margin-left: 30px;color:rgb(25, 114, 149) ;">Truck</span>
+                </div>
+                </div><br>
+                <label  for="">Make</label><br>
+                <input id="make" type="text" placeholder="Toyota" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                
+                <label>Registration Number</label><br>
+                <input id="register" type="text" placeholder="TN 38 AB 1234" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <label for="">Manufacturing Year</label><br>
+                <input id="year" type="Number" name="" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                
+                <label for="">Current mileage</label><br>
+                <input id="mileage" type="number" name="" placeholder="45000km" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <label for="">Vehicle Color</label><br>
+                <input id="color" type="text" placeholder="White" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <label for="">Vehicle Image</label><br>
+                <input id="image" type="file" name=""  style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <button id="saveVehicle" style="height: 30px;width: 450px;border-radius: 5px;background-color:rgb(25, 114, 149) ;">Add Vehicle</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let vehicleType = "";
+         document.getElementById("closeForm").onclick = function () {
+        window.location.href = "addvehicle.html";
+       };
+        document.getElementById("saveVehicle").onclick = function (e) {
+        e.preventDefault();
+       if(vehicleType==""){
+        alert("Please select a vehicle type");
+        return;
+        }
+        let vehicle = {
+        type: vehicleType,
+        make: document.getElementById("make").value,
+        reg: document.getElementById("register").value,
+        year: document.getElementById("year").value,
+        mileage: document.getElementById("mileage").value,
+        color: document.getElementById("color").value
+        };
+        let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+        vehicles.push(vehicle);
+        localStorage.setItem("vehicles", JSON.stringify(vehicles));
+        alert("Vehicle Added Successfully");
+        window.location.href = "addvehicle.html";
+        };
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="nav" style="height: 50px; width: 1315px;border: 1px solid lightgray;" >
+        <img style="height: 50px;width: 50px;" src="logo.png" alt="">
+        <p style="font-size: 20px;color:rgb(25, 114, 149) ;"><b>VehicleCare</b></p>
+        <nav style="margin-left: 300px;margin-top: 20px;" >
+            <a style="padding: 10px;text-decoration: none;" href="home.html">Home</a>
+            <a style="padding: 10px;text-decoration: none;" href="addvehicle.html">Our Services</a>
+            <a style="padding: 10px;text-decoration: none;" href="aboutus.html">About Us</a>
+            <a style="padding: 10px;text-decoration: none;" href="contactus.html">Contact Us</a>
+        </nav>
+        <!-- <input type="text" placeholder="   search" style="margin-left:50px;margin-top: 10px; height: 30px;width: 200px;border:1px solid lightgrey;border-radius: 20px;"> -->
+
+    </div>
+    <div style="display: flex;flex-direction: row;">
+        <div style="height: 575px;width: 300px;background-color:rgb(25, 114, 149) ;display: flex;flex-direction: column;">
+             <a href="home.html" style="margin: 10px;padding: 5px;color: white;text-decoration: none;font-size: 20px;margin-left: 50px;margin-top: 50px;"> Home</a>
+           <a href="addvehicle.html" style="margin: 10px;padding: 5px;color: white;text-decoration: none;font-size: 20px;margin-left: 50px;"> Vehicle</a>
+            <a href="servicehistory.html" style="margin: 10px;padding: 5px;color: white;text-decoration: none;font-size: 20px;margin-left: 50px;">Service History</a>
+            <a href="maintenance.html" style="margin: 10px;padding: 5px;color: white;text-decoration: none;font-size: 20px;margin-left: 50px;">Maintance</a>
+            <a href="search.html" style="margin: 10px;padding: 5px;color: white;text-decoration: none;font-size: 20px;margin-left: 50px;">Search</a>
+        </div>
+        <div style="margin-left: 50px;">
+            <h1>Vehicle</h1>
+            <div style="display: flex; flex-direction: row;">
+            <p>Manage your fleet and current mileage</p>
+            <button id="openForm" style="height: 50px;width: 100px;padding: 10px;color: white;background-color:rgb(25, 114, 149)  ;margin-left: 300px;border-radius: 5px;">+ Add Vehicle</button>
+            </div>
+           <div id="vehicleList" style="height:300px;width:700px;border:1px dashed lightgray;padding:20px;
+            overflow:auto; margin-top: 20px;">No vehicles added</div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("openForm").onclick = function () {
+        window.location.href = "vehiclelist.html";
+       };
+
+       function displayVehicles() {
+       let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+       let output = "";
+       if (vehicles.length == 0) {
+        output = "No vehicles added";
+       } else {
+        vehicles.forEach(function (v, index) { output += `<div style="border:1px solid #ccc;padding:15px;margin-bottom:10px;border-radius:8px;"><h3>${v.type}</h3><p>Make : ${v.make}</p> <p>Registration : ${v.reg}</p><p>Year : ${v.year}</p><p>Mileage : ${v.mileage}</p><p>Colour : ${v.color}</p><button onclick="deleteVehicle(${index})">Delete</button></div>`;
+        });
+       }
+       document.getElementById("vehicleList").innerHTML = output;
+    }
+    function deleteVehicle(index) {
+    let vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+    vehicles.splice(index, 1);
+    localStorage.setItem("vehicles", JSON.stringify(vehicles));
+    displayVehicles();
+    }
+    displayVehicles();
+    
+</script>
+</body>
+</html>

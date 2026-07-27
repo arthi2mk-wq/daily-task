@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image: url(bg.png);background-size: cover;">
+    <div >
+        
+        
+        <div style="height: 680px;width: 550px;border: 1px solid rgb(25, 114, 149); margin-left: 280px;padding-left: 20px;padding-top: 10px;background-color:white" >
+            <form action="" style="margin-left: 30px;">
+                <img id="closeForm"src="close.png"style="height:30px;width:30px;margin-left:450px;cursor:pointer;margin-top:10px">
+                <h3>Log Service</h3><br>
+                <label for="">Vehicle</label><br>
+                <input type="text"  id="vehicleSelect" style="height: 30px;width: 450px;border-radius: 5px;">
+               
+                
+                <br><br>
+                
+                <label>Service Type</label><br>
+                <select name="" id="serviceType" style="height: 30px;width: 450px;border-radius: 5px;">
+                    <option value="">Oil change</option>
+                    <option value="">Tire rotation</option>
+                    <option value="">Brake Service</option>
+                    <option value="">Battery</option>
+                    <option value="">Air filter</option>
+                    <option value="">Coolant Flush</option>
+                    <option value="">Inspection</option>
+                    <option value="">Others</option>
+                </select><br><br>
+                 <label  for="">Mileage at service</label><br>
+                <input id="mileage" type="number" name="" placeholder="45000km" style="height: 30px;width: 450px;border-radius: 5px;" required><br><br>
+                <label for="">Cost(optional)</label>
+                <input id="cost" type="number"  style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <label for="">Date</label><br>
+                <input id="date" type="date" name="" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                <label for="">Notes(optional)</label>
+                <textarea id="notes" name="" id="" style="height: 80px;width: 450px;border-radius: 5px;"></textarea><br><br><br>
+                <button id="saveService" style="height: 30px;width: 450px;border-radius: 5px;background-color:rgb(25, 114, 149) ;">Save Record</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("saveService").onclick = function(e){
+        e.preventDefault();
+    if(document.getElementById("vehicleSelect").value==""){
+        alert("Please select a vehicle");
+        return;
+    }
+    // if(document.getElementById("serviceType").value==""){
+    //     alert("Please select a service type");
+    //     return;
+    //}
+    if(document.getElementById("mileage").value==""){
+        alert("Please enter mileage");
+        return;
+    }
+    if(document.getElementById("date").value==""){
+        alert("Please select a date");
+        return;
+    }
+    let service = {
+        vehicle : document.getElementById("vehicleSelect").value,
+        type : document.getElementById("serviceType").value,
+        mileage : document.getElementById("mileage").value,
+        cost : document.getElementById("cost").value,
+        date : document.getElementById("date").value,
+        notes : document.getElementById("notes").value
+    };
+    let services = JSON.parse(localStorage.getItem("services")) || [];
+    services.push(service);
+    localStorage.setItem("services",JSON.stringify(services));
+    alert("Service Record Saved");
+    window.location.href="servicehistory.html";
+}
+    </script>
+</body>
+</html>

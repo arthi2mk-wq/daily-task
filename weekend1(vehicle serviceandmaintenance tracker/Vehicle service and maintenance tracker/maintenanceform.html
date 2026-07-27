@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image: url(mbg.png);background-size: cover;">
+     <div >
+        
+        
+        <div style="height: 550px;width: 550px;border: 1px solid rgb(25, 114, 149); margin-left: 280px;padding-left: 20px;padding-top: 10px;background-color:white" >
+            <form action="" style="margin-left: 30px;">
+                <img id="closeForm"src="close.png"style="height:30px;width:30px;margin-left:450px;cursor:pointer;margin-top:10px">
+                <h3>Schedule Maintenance</h3><br>
+                <label for="">Vehicle</label><br>
+                <input type="text"  id="vehicleSelect" style="height: 30px;width: 450px;border-radius: 5px;">
+               
+                
+                <br><br>
+                
+                <label>Service Type</label><br>
+                <select name="" id="serviceType" style="height: 30px;width: 450px;border-radius: 5px;">
+                    <option value="">Oil change</option>
+                    <option value="">Tire rotation</option>
+                    <option value="">Brake Service</option>
+                    <option value="">Battery</option>
+                    <option value="">Air filter</option>
+                    <option value="">Coolant Flush</option>
+                    <option value="">Inspection</option>
+                    <option value="">Others</option>
+                </select><br><br>
+                <label for="">Due date</label><br>
+                <input id="dueDate"  type="date" name="" style="height: 30px;width: 450px;border-radius: 5px;"><br><br>
+                 <label  for="">Due mileage</label><br>
+                <input id="dueMileage"   type="number" name="" placeholder="45000km" style="height: 30px;width: 450px;border-radius: 5px;" required><br><br>
+                <br><br>
+                <button id="saveMaintenance"  style="height: 30px;width: 450px;border-radius: 5px;background-color:rgb(25, 114, 149) ;">Schedule</button>
+            </form>
+        </div>
+    </div>
+    <script>
+    document.getElementById("saveMaintenance").onclick = function(e){
+    e.preventDefault();
+    let vehicle = document.getElementById("vehicleSelect").value;
+    let serviceType = document.getElementById("serviceType").value;
+    let dueDate = document.getElementById("dueDate").value;
+    let dueMileage = document.getElementById("dueMileage").value;
+
+    if(vehicle == ""){
+        alert("Please enter vehicle name");
+        return;
+    }
+
+    // if(serviceType == ""){
+    //     alert("Please select service type");
+    //     return;
+    // }
+
+    if(dueDate == ""){
+        alert("Please select due date");
+        return;
+    }
+
+    if(dueMileage == ""){
+        alert("Please enter due mileage");
+        return;
+    }
+
+    let maintenance = {
+        vehicle: vehicle,
+        type: serviceType,
+        dueDate: dueDate,
+        dueMileage: dueMileage
+    };
+
+    let list = JSON.parse(localStorage.getItem("maintenance")) || [];
+    list.push(maintenance);
+    localStorage.setItem("maintenance", JSON.stringify(list));
+    alert("Maintenance Scheduled Successfully");
+    window.location.href = "maintenance.html";
+};
+    </script>
+    
+</body>
+</html>

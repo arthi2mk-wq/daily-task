@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VehicleCare</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body style="background-image: url(loginimage.png); background-repeat: no-repeat;background-size: cover;">
+    
+    <div id="all">
+    <div id="login" style=" height: 450px;width:400px;">
+        <h1>Register</h1>
+        <p>Welcome please crete your account</p>
+        <label for="">Username:</label>
+        <input id="username" class="a" type="text" placeholder="     Enter username" required><br>
+        <label for="">Email:</label>
+        <input id="email" class="a" type="email" placeholder="     Enter your Email" required><br>
+        <label for="">Password:</label>
+        <input id="password" class="a"  type="password" placeholder="     Enter your password" required><br>
+        <label for="">Confirm Password:</label>
+        <input id="confirm-password" class="a"  type="password" placeholder="     Confirm your password" required><br>
+        
+        <button id="registerbtn" class="a" style="background-color:rgb(25, 114, 149) ;color: white;height: 50px;">Register</button><br>
+        <p style="margin-left: 40px;">I already have an account <a href="login.html" style="text-decoration: none;">Log In</a></p>
+        
+        
+    </div>
+    <div>
+            <img style=" height: 512px;width: 450px;" id="image1" src="loginimage.png" alt="">
+     </div>
+     </div>
+     <script>
+        document.getElementById("registerbtn").addEventListener("click",function(){
+            let username=document.getElementById("username").value.trim();
+            let email=document.getElementById("email").value.trim();
+            let password=document.getElementById("password").value;
+            let confirm_password=document.getElementById("confirm-password").value
+            if(password !== confirm_password){
+                alert("password do not match")
+                return;
+            }
+            let user={
+                username:username,
+                email:email,
+                password:password
+            };
+            localStorage.setItem("user",JSON.stringify(user));
+            alert("Registration complete Successfully")
+
+            window.location.href="login.html"
+
+            
+        })
+    </script>
+
+    
+</body>
+</html>
